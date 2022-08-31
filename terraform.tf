@@ -4,7 +4,6 @@ terraform {
     # see https://www.terraform.io/cli/cloud/settings#organization
     organization = "workloads"
 
-    # TODO: move to TFC Env Var
     # see https://www.terraform.io/cli/cloud/settings#workspaces
     workspaces {
       name = "dns"
