@@ -27,6 +27,7 @@
 | Name | Description |
 |------|-------------|
 | aws_route53_zone | Exported Attributes for `aws_route53_zone`. |
+| gandi_nameservers | Exported Attributes for `gandi_nameservers`. |
 <!-- END_TF_DOCS -->
 
 ## Author Information
