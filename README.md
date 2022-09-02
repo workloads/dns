@@ -18,6 +18,8 @@
 
 | Name | Description | Type | Required |
 |------|-------------|------|:--------:|
+| gandi_key | Gandi API Key. | `string` | yes |
+| gandi_sharing_id | Gandi Sharing ID. | `string` | yes |
 | management_region_aws | AWS-specific `Management` Region Identifier. | `string` | yes |
 | project_identifier | Human-readable Project Identifier. | `string` | yes |
 | domains | Project-specific (public) Domains. | <pre>object({<br>    primary = string<br>  })</pre> | no |
