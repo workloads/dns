@@ -19,8 +19,8 @@ module "keybase_domain_proofs" {
   # TODO: replace with Registry reference
   source = "github.com/ksatirli/terraform-aws-route53-keybase-domain-proof?ref=updates-and-upgrades"
 
-  domain_proof    = "KXdzEmbMH4Jkd3oCzBmhug_iLivoDOo__a734lh58cw"
-  zone_id             = aws_route53_zone.domains["primary"].zone_id
+  domain_proof = "KXdzEmbMH4Jkd3oCzBmhug_iLivoDOo__a734lh58cw"
+  zone_id      = aws_route53_zone.domains["primary"].zone_id
 }
 
 module "workmail_records" {

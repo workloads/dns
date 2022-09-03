@@ -11,15 +11,15 @@ variable "domains" {
 }
 
 variable "gandi_key" {
-  type = string
+  type        = string
   description = "Gandi API Key."
-  sensitive = true
+  sensitive   = true
 }
 
 variable "gandi_sharing_id" {
-  type = string
+  type        = string
   description = "Gandi Sharing ID."
-  sensitive = true
+  sensitive   = true
 }
 
 variable "management_region_aws" {
