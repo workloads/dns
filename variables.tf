@@ -27,7 +27,6 @@ variable "management_region_aws" {
   description = "AWS-specific `Management` Region Identifier."
 }
 
-# tflint-ignore: terraform_unused_declarations
 variable "project_identifier" {
   type        = string
   description = "Human-readable Project Identifier."
