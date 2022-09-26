@@ -16,6 +16,7 @@ module "github_verification" {
   zone_id             = aws_route53_zone.domains["primary"].zone_id
 }
 module "keybase_domain_proofs" {
+  # see https://registry.terraform.io/modules/ksatirli/route53-keybase-domain-proof/aws/2.0.0
   source  = "ksatirli/route53-keybase-domain-proof/aws"
   version = "2.0.0"
 
