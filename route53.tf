@@ -1,6 +1,6 @@
 # see https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_zone
 resource "aws_route53_zone" "domains" {
-  # see https://www.terraform.io/docs/language/meta-arguments/for_each.html
+  # see https://developer.hashicorp.com/terraform/language/meta-arguments/for_each
   for_each = var.domains
 
   name = each.value
