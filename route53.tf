@@ -8,6 +8,9 @@ resource "aws_route53_zone" "domains" {
 }
 
 module "github_verification" {
+  # see https://developer.hashicorp.com/terraform/language/meta-arguments/for_each
+  for_each = aws_route53_zone.domains
+
   # see https://registry.terraform.io/modules/ksatirli/route53-github-verification/aws/2.0.0
   source  = "ksatirli/route53-github-verification/aws"
   version = "2.0.0"
