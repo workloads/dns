@@ -4,6 +4,7 @@ resource "aws_route53_zone" "domains" {
   for_each = var.domains
 
   name = each.value
+  comment = "Terraform-managed DNS Zone for ${var.project_identifier}."
 }
 
 module "github_verification" {
@@ -11,10 +12,12 @@ module "github_verification" {
   source  = "ksatirli/route53-github-verification/aws"
   version = "2.0.0"
 
+  # GitHub Organizations require `-org` suffix, personal accounts do not
   github_organization = "${var.project_identifier}-org"
   ownership_record    = "3bba497d6f"
   zone_id             = aws_route53_zone.domains["primary"].zone_id
 }
+
 module "keybase_domain_proofs" {
   # see https://registry.terraform.io/modules/ksatirli/route53-keybase-domain-proof/aws/2.0.0
   source  = "ksatirli/route53-keybase-domain-proof/aws"
