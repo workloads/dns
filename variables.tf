@@ -1,12 +1,24 @@
 variable "domains" {
-  type = object({
-    primary = string
-  })
+  type = map(object({
+    name             = string
+    github_challenge = optional(string)
+    keybase_proof    = optional(string)
+  }))
 
   description = "Project-specific (public) Domains."
 
   default = {
-    primary = "workloads.io"
+    primary = {
+      name             = "workloads.io"
+      github_challenge = "3bba497d6f"
+      keybase_proof    = "KXdzEmbMH4Jkd3oCzBmhug_iLivoDOo__a734lh58cw"
+    }
+
+    podcast = {
+      name             = "workloads.fm"
+      github_challenge = "3bba497d6f"
+      keybase_proof    = "TPb7TTdqxDjq7f9BJ42w46G1usTAGFC6UQnJp5_-YZI"
+    }
   }
 }
 
