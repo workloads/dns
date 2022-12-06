@@ -22,7 +22,7 @@
 | gandi_sharing_id | Gandi Sharing ID. | `string` | yes |
 | management_region_aws | AWS-specific `Management` Region Identifier. | `string` | yes |
 | project_identifier | Human-readable Project Identifier. | `string` | yes |
-| domains | Project-specific (public) Domains. | <pre>object({<br>    primary = string<br>  })</pre> | no |
+| domains | Project-specific (public) Domains. | <pre>map(object({<br>    name             = string<br>    github_challenge = optional(string)<br>    keybase_proof    = optional(string)<br>  }))</pre> | no |
 
 ### Outputs
 
