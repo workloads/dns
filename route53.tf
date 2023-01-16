@@ -7,6 +7,16 @@ resource "aws_route53_zone" "domains" {
   comment = "Terraform-managed DNS Zone for ${var.project_identifier}."
 }
 
+# create subdomains for each showcase provider
+# see https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_zone
+resource "aws_route53_zone" "showcase_subdomains" {
+  # see https://developer.hashicorp.com/terraform/language/meta-arguments/for_each
+  for_each = toset(var.domains.showcase.subdomains)
+
+  name    = "${each.value}.${var.domains.showcase.name}"
+  comment = "Terraform-managed DNS Zone for Provider-specific Subdomain for ${var.project_identifier}."
+}
+
 module "github_verification" {
   # see https://developer.hashicorp.com/terraform/language/meta-arguments/for_each
   for_each = aws_route53_zone.domains

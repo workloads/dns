@@ -3,6 +3,7 @@ variable "domains" {
     name             = string
     github_challenge = optional(string)
     keybase_proof    = optional(string)
+    subdomains       = optional(list(string))
   }))
 
   description = "Project-specific (public) Domains."
@@ -12,6 +13,42 @@ variable "domains" {
       name             = "workloads.io"
       github_challenge = "3bba497d6f"
       keybase_proof    = "KXdzEmbMH4Jkd3oCzBmhug_iLivoDOo__a734lh58cw"
+    }
+
+    podcast = {
+      name             = "workloads.fm"
+      github_challenge = "3bba497d6f"
+      keybase_proof    = "TPb7TTdqxDjq7f9BJ42w46G1usTAGFC6UQnJp5_-YZI"
+    }
+
+    showcase = {
+      name             = "svcs.dev"
+      github_challenge = "7b234873f8"
+      keybase_proof    = "lixGZ9wCZokUw3C3vOq1bRhggwlvrN6t48EJYlZ3Uuw"
+
+      subdomains = [
+        "aws", # Amazon Web Services
+        "az",  # Microsoft Azure
+        "do",  # Digital Ocean
+        "gcp", # Google Cloud
+        "swy", # Scaleway
+      ]
+    }
+  }
+}
+
+variable "showcase_subdomains" {
+  type = map(object({
+    name             = string
+    github_challenge = optional(string)
+    keybase_proof    = optional(string)
+  }))
+
+  description = "Project-specific (public) Domains."
+
+  default = {
+    primary = {
+      name = "aws"
     }
 
     podcast = {

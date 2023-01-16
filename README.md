@@ -22,13 +22,15 @@
 | gandi_sharing_id | Gandi Sharing ID. | `string` | yes |
 | management_region_aws | AWS-specific `Management` Region Identifier. | `string` | yes |
 | project_identifier | Human-readable Project Identifier. | `string` | yes |
-| domains | Project-specific (public) Domains. | <pre>map(object({<br>    name             = string<br>    github_challenge = optional(string)<br>    keybase_proof    = optional(string)<br>  }))</pre> | no |
+| domains | Project-specific (public) Domains. | <pre>map(object({<br>    name             = string<br>    github_challenge = optional(string)<br>    keybase_proof    = optional(string)<br>    subdomains       = optional(list(string))<br>  }))</pre> | no |
+| showcase_subdomains | Project-specific (public) Domains. | <pre>map(object({<br>    name             = string<br>    github_challenge = optional(string)<br>    keybase_proof    = optional(string)<br>  }))</pre> | no |
 
 ### Outputs
 
 | Name | Description |
 |------|-------------|
-| aws_route53_zone | Exported Attributes for `aws_route53_zone`. |
+| aws_route53_zone_domains | Exported Attributes for `aws_route53_zone.domains`. |
+| aws_route53_zone_subdomains | Exported Attributes for `aws_route53_zone.showcase_subdomains`. |
 | gandi_nameservers | Exported Attributes for `gandi_nameservers`. |
 <!-- END_TF_DOCS -->
 
