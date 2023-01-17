@@ -57,3 +57,29 @@ module "workmail_records" {
   workmail_zone = "us-west-2"
   zone_id       = aws_route53_zone.domains[each.key].zone_id
 }
+
+# Special Record for HTTP interface of https://github.com/ksatirli/breakpoint
+# see https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record
+resource "aws_route53_record" "showcase_breakpoint_a" {
+  zone_id = aws_route53_zone.domains["showcase"].zone_id
+  name    = "breakpoint.${aws_route53_zone.domains["showcase"].name}"
+  type    = "A"
+  ttl     = 300
+
+  records = [
+    "127.0.0.1"
+  ]
+}
+
+# Special Record for HTTP interface of https://github.com/ksatirli/breakpoint
+# see https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record
+resource "aws_route53_record" "showcase_breakpoint_aaaa" {
+  zone_id = aws_route53_zone.domains["showcase"].zone_id
+  name    = "breakpoint.${aws_route53_zone.domains["showcase"].name}"
+  type    = "AAAA"
+  ttl     = 300
+
+  records = [
+    "::1"
+  ]
+}
