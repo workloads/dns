@@ -17,13 +17,13 @@ variable "domains" {
 
     podcast = {
       name             = "workloads.fm"
-      github_challenge = "3bba497d6f"
+      github_challenge = "5eeba6976a"
       keybase_proof    = "TPb7TTdqxDjq7f9BJ42w46G1usTAGFC6UQnJp5_-YZI"
     }
 
     showcase = {
       name             = "svcs.dev"
-      github_challenge = "7b234873f8"
+      github_challenge = "2b19dbea14"
       keybase_proof    = "lixGZ9wCZokUw3C3vOq1bRhggwlvrN6t48EJYlZ3Uuw"
 
       subdomains = [
