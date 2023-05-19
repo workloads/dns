@@ -37,6 +37,28 @@ variable "domains" {
   }
 }
 
+variable "gandi_key" {
+  type        = string
+  description = "Gandi API Key."
+  sensitive   = true
+}
+
+variable "gandi_sharing_id" {
+  type        = string
+  description = "Gandi Sharing ID."
+  sensitive   = true
+}
+
+variable "management_region_aws" {
+  type        = string
+  description = "AWS-specific `Management` Region Identifier."
+}
+
+variable "project_identifier" {
+  type        = string
+  description = "Human-readable Project Identifier."
+}
+
 variable "showcase_subdomains" {
   type = map(object({
     name             = string
@@ -63,26 +85,4 @@ variable "showcase_subdomains" {
       keybase_proof    = "lixGZ9wCZokUw3C3vOq1bRhggwlvrN6t48EJYlZ3Uuw"
     }
   }
-}
-
-variable "gandi_key" {
-  type        = string
-  description = "Gandi API Key."
-  sensitive   = true
-}
-
-variable "gandi_sharing_id" {
-  type        = string
-  description = "Gandi Sharing ID."
-  sensitive   = true
-}
-
-variable "management_region_aws" {
-  type        = string
-  description = "AWS-specific `Management` Region Identifier."
-}
-
-variable "project_identifier" {
-  type        = string
-  description = "Human-readable Project Identifier."
 }
