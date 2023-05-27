@@ -35,9 +35,9 @@ module "keybase_domain_proofs" {
   # see https://developer.hashicorp.com/terraform/language/meta-arguments/for_each
   for_each = aws_route53_zone.domains
 
-  # see https://registry.terraform.io/modules/ksatirli/route53-keybase-domain-proof/aws/2.0.0
+  # see https://registry.terraform.io/modules/ksatirli/route53-keybase-domain-proof/aws/2.1.0
   source  = "ksatirli/route53-keybase-domain-proof/aws"
-  version = "2.0.0"
+  version = "2.1.0"
 
   domain_proof = var.domains[each.key].keybase_proof
   zone_id      = aws_route53_zone.domains[each.key].zone_id
