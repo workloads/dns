@@ -56,6 +56,35 @@ module "workmail_records" {
 
   workmail_zone = "us-west-2"
   zone_id       = aws_route53_zone.domains[each.key].zone_id
+
+  apex_txt_record_append = [
+    # see https://support.1password.com/breach-report/
+  "1password-site-verification=${var.domains[each.key].onepassword_challenge}", ]
+}
+
+# Special Record for Let's Encrypt DNS Challenge
+# see https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record
+resource "aws_route53_record" "showcase_txt" {
+  zone_id = aws_route53_zone.domains["showcase"].zone_id
+  name    = aws_route53_zone.domains["showcase"].name
+  type    = "TXT"
+  ttl     = 300
+
+  # see https://developer.hashicorp.com/terraform/language/functions/concat
+  records = [
+    "1password-site-verification=${var.domains["showcase"].onepassword_challenge}",
+  ]
+}
+
+# Special Record for Let's Encrypt DNS Challenge
+# see https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record
+resource "aws_route53_record" "showcase_acme_challenges_txt" {
+  zone_id = aws_route53_zone.domains["showcase"].zone_id
+  name    = "_acme-challenge.${aws_route53_zone.domains["showcase"].name}"
+  type    = "TXT"
+  ttl     = 300
+
+  records = var.domains["showcase"].acme_challenges
 }
 
 # Special Record for HTTP interface of https://github.com/ksatirli/breakpoint
