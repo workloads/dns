@@ -32,6 +32,8 @@ variable "domains" {
         "TsFD07SzwHyIe0fLmjda5Lq2eu4d9_gCTk4QptwCby0",
         "JRrcDuN5LQbRMv3BTNjfphpabPKZ1U_ZArP8g0LdwCc",
         "Lsp8ZUJApBqmPvcc1s7E-t4ZuZvI3TKHY1Fx6aE-SnE",
+        "9U4APQD_G0aw2mqSyN6nk9Ipj4LT_BTfq6SiBOz2qMU",
+        "KvGGShk_cST1oDdAEUiOh2NAkeH2HPZBXifmgUxopPE"
       ]
 
       github_challenge = "2b19dbea14"
