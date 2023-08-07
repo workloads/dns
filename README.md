@@ -29,7 +29,7 @@ For more information, including detailed usage guidelines, see the [Terraform do
 | gandi_sharing_id | Gandi Sharing ID. | `string` | yes |
 | management_region_aws | AWS-specific `Management` Region Identifier. | `string` | yes |
 | project_identifier | Human-readable Project Identifier. | `string` | yes |
-| domains | Project-specific (public) Domains. | <pre>map(object({<br>    name             = string<br>    github_challenge = optional(string)<br>    keybase_proof    = optional(string)<br>    subdomains       = optional(list(string))<br>  }))</pre> | no |
+| domains | Project-specific (public) Domains. | <pre>map(object({<br>    name                  = string<br>    acme_challenges       = optional(list(string))<br>    github_challenge      = optional(string)<br>    keybase_proof         = optional(string)<br>    onepassword_challenge = optional(string)<br>    subdomains            = optional(list(string))<br>  }))</pre> | no |
 | showcase_subdomains | Project-specific (public) Domains. | <pre>map(object({<br>    name             = string<br>    github_challenge = optional(string)<br>    keybase_proof    = optional(string)<br>  }))</pre> | no |
 
 ### Outputs
