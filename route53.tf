@@ -59,7 +59,11 @@ module "workmail_records" {
 
   apex_txt_record_append = [
     # see https://support.1password.com/breach-report/
-  "1password-site-verification=${var.domains[each.key].onepassword_challenge}", ]
+    "1password-site-verification=${var.domains[each.key].onepassword_challenge}",
+
+    # see https://support.google.com/webmasters/answer/9008080
+    "google-site-verification=${var.domains[each.key].google_site_verification}"
+  ]
 }
 
 # Special Record for Let's Encrypt DNS Challenge
@@ -73,6 +77,7 @@ resource "aws_route53_record" "showcase_txt" {
   # see https://developer.hashicorp.com/terraform/language/functions/concat
   records = [
     "1password-site-verification=${var.domains["showcase"].onepassword_challenge}",
+    "google-site-verification=${var.domains["showcase"].google_site_verification}"
   ]
 }
 
