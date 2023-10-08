@@ -44,12 +44,13 @@ variable "domains" {
       keybase_proof            = "lixGZ9wCZokUw3C3vOq1bRhggwlvrN6t48EJYlZ3Uuw"
       onepassword_challenge    = "IP7JH24TSNEFTFMYJKXUL5B62A"
 
+      # TODO: make this consume var.csp_configuration
       subdomains = [
         "aws", # Amazon Web Services
         "az",  # Microsoft Azure
         "do",  # Digital Ocean
         "gcp", # Google Cloud
-        "swy", # Scaleway
+        "scw", # Scaleway
       ]
     }
   }
