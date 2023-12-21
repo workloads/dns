@@ -1,6 +1,6 @@
 # Terraform Cloud Workspace `dns`
 
-> This directory manages the lifecycle of the DNS Configuration for [@workloads](https://github.com/workloads).
+> This repository manages DNS Configuration for [@workloads](https://github.com/workloads).
 
 ## Table of Contents
 
@@ -18,7 +18,7 @@
 
 ## Requirements
 
-- HashiCorp Terraform `1.5.x` or [newer](https://developer.hashicorp.com/packer/downloads)
+- HashiCorp Terraform `1.6.x` or [newer](https://developer.hashicorp.com/terraform/downloads)
 
 ### Development
 
