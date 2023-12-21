@@ -8,6 +8,7 @@
 * [Terraform Cloud Workspace `dns`](#terraform-cloud-workspace-dns)
   * [Table of Contents](#table-of-contents)
   * [Requirements](#requirements)
+    * [Development](#development)
   * [Usage](#usage)
     * [Inputs](#inputs)
     * [Outputs](#outputs)
@@ -19,9 +20,11 @@
 
 - HashiCorp Terraform `1.5.x` or [newer](https://developer.hashicorp.com/packer/downloads)
 
-Optional, and only needed for documentation generation:
+### Development
 
-- `terraform-docs` `0.16.0` or [newer](https://terraform-docs.io/user-guide/installation/)
+For development and testing of this repository:
+
+- `terraform-docs` `0.17.0` or [newer](https://terraform-docs.io/user-guide/installation/)
 
 ## Usage
 
