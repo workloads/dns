@@ -11,10 +11,10 @@ resource "aws_route53_zone" "domains" {
 # see https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_zone
 resource "aws_route53_zone" "showcase_subdomains" {
   # see https://developer.hashicorp.com/terraform/language/meta-arguments/for_each
-  for_each = toset(var.domains.showcase.subdomains)
+  for_each = toset(var.domains.svcs_dev.subdomains)
 
-  name    = "${each.value}.${var.domains.showcase.name}"
-  comment = "Terraform-managed DNS Zone for Provider-specific Subdomain for ${var.project_identifier}."
+  name    = "${each.value}.${var.domains.svcs_dev.name}"
+  comment = "Terraform-managed DNS Zone for CSP Configuration-specific Subdomain for ${var.project_identifier}."
 }
 
 module "github_verification" {
@@ -46,8 +46,8 @@ module "keybase_domain_proofs" {
 module "workmail_records" {
   # see https://developer.hashicorp.com/terraform/language/meta-arguments/for_each
   for_each = toset([
-    "primary",
-    "podcast",
+    "workloads_io",
+    "workloads_fm",
   ])
 
   # see https://registry.terraform.io/modules/ksatirli/route53-workmail-records/aws/2.0.0
@@ -69,34 +69,34 @@ module "workmail_records" {
 # Special Record for Let's Encrypt DNS Challenge
 # see https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record
 resource "aws_route53_record" "showcase_txt" {
-  zone_id = aws_route53_zone.domains["showcase"].zone_id
-  name    = aws_route53_zone.domains["showcase"].name
+  zone_id = aws_route53_zone.domains["svcs_dev"].zone_id
+  name    = aws_route53_zone.domains["svcs_dev"].name
   type    = "TXT"
   ttl     = 300
 
   # see https://developer.hashicorp.com/terraform/language/functions/concat
   records = [
-    "1password-site-verification=${var.domains["showcase"].onepassword_challenge}",
-    "google-site-verification=${var.domains["showcase"].google_site_verification}"
+    "1password-site-verification=${var.domains["svcs_dev"].onepassword_challenge}",
+    "google-site-verification=${var.domains["svcs_dev"].google_site_verification}"
   ]
 }
 
 # Special Record for Let's Encrypt DNS Challenge
 # see https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record
 resource "aws_route53_record" "showcase_acme_challenges_txt" {
-  zone_id = aws_route53_zone.domains["showcase"].zone_id
-  name    = "_acme-challenge.${aws_route53_zone.domains["showcase"].name}"
+  zone_id = aws_route53_zone.domains["svcs_dev"].zone_id
+  name    = "_acme-challenge.${aws_route53_zone.domains["svcs_dev"].name}"
   type    = "TXT"
   ttl     = 300
 
-  records = var.domains["showcase"].acme_challenges
+  records = var.domains["svcs_dev"].acme_challenges
 }
 
 # Special Record for HTTP interface of https://github.com/ksatirli/breakpoint
 # see https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record
 resource "aws_route53_record" "showcase_breakpoint_a" {
-  zone_id = aws_route53_zone.domains["showcase"].zone_id
-  name    = "breakpoint.${aws_route53_zone.domains["showcase"].name}"
+  zone_id = aws_route53_zone.domains["svcs_dev"].zone_id
+  name    = "breakpoint.${aws_route53_zone.domains["svcs_dev"].name}"
   type    = "A"
   ttl     = 300
 
@@ -108,8 +108,8 @@ resource "aws_route53_record" "showcase_breakpoint_a" {
 # Special Record for HTTP interface of https://github.com/ksatirli/breakpoint
 # see https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record
 resource "aws_route53_record" "showcase_breakpoint_aaaa" {
-  zone_id = aws_route53_zone.domains["showcase"].zone_id
-  name    = "breakpoint.${aws_route53_zone.domains["showcase"].name}"
+  zone_id = aws_route53_zone.domains["svcs_dev"].zone_id
+  name    = "breakpoint.${aws_route53_zone.domains["svcs_dev"].name}"
   type    = "AAAA"
   ttl     = 300
 

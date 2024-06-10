@@ -37,12 +37,10 @@ For more information, including detailed usage guidelines, see the [Terraform do
 
 | Name | Description | Type | Required |
 |------|-------------|------|:--------:|
-| gandi_key | Gandi API Key. | `string` | yes |
-| gandi_sharing_id | Gandi Sharing ID. | `string` | yes |
+| gandi_personal_access_token | Gandi API Key. | `string` | yes |
 | management_region_aws | AWS-specific `Management` Region Identifier. | `string` | yes |
 | project_identifier | Human-readable Project Identifier. | `string` | yes |
 | domains | Project-specific (public) Domains. | <pre>map(object({<br>    name                     = string<br>    acme_challenges          = optional(list(string))<br>    github_challenge         = optional(string)<br>    google_site_verification = optional(string)<br>    keybase_proof            = optional(string)<br>    onepassword_challenge    = optional(string)<br>    subdomains               = optional(list(string))<br>  }))</pre> | no |
-| showcase_subdomains | Project-specific (public) Domains. | <pre>map(object({<br>    name             = string<br>    github_challenge = optional(string)<br>    keybase_proof    = optional(string)<br>  }))</pre> | no |
 
 ### Outputs
 
