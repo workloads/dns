@@ -7,9 +7,9 @@ resource "aws_route53_zone" "domains" {
   comment = "Terraform-managed DNS Zone for ${var.project_identifier}."
 }
 
-# create subdomains for each showcase provider
+# create subdomains for each item listed in CSP Configuration
 # see https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_zone
-resource "aws_route53_zone" "showcase_subdomains" {
+resource "aws_route53_zone" "svcs_dev_subdomains" {
   # see https://developer.hashicorp.com/terraform/language/meta-arguments/for_each
   for_each = toset(var.domains.svcs_dev.subdomains)
 
@@ -46,13 +46,15 @@ module "keybase_domain_proofs" {
 module "workmail_records" {
   # see https://developer.hashicorp.com/terraform/language/meta-arguments/for_each
   for_each = toset([
-    "workloads_io",
+    "workloads_app",
     "workloads_fm",
+    "workloads_io",
+    "workloads_run",
   ])
 
-  # see https://registry.terraform.io/modules/ksatirli/route53-workmail-records/aws/2.0.0
+  # see https://registry.terraform.io/modules/ksatirli/route53-workmail-records/aws/2.1.0
   source  = "ksatirli/route53-workmail-records/aws"
-  version = "2.0.0"
+  version = "2.1.0"
 
   workmail_zone = "us-west-2"
   zone_id       = aws_route53_zone.domains[each.key].zone_id
@@ -68,7 +70,7 @@ module "workmail_records" {
 
 # Special Record for Let's Encrypt DNS Challenge
 # see https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record
-resource "aws_route53_record" "showcase_txt" {
+resource "aws_route53_record" "svcs_dev_txt" {
   zone_id = aws_route53_zone.domains["svcs_dev"].zone_id
   name    = aws_route53_zone.domains["svcs_dev"].name
   type    = "TXT"
@@ -83,7 +85,7 @@ resource "aws_route53_record" "showcase_txt" {
 
 # Special Record for Let's Encrypt DNS Challenge
 # see https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record
-resource "aws_route53_record" "showcase_acme_challenges_txt" {
+resource "aws_route53_record" "svcs_dev_acme_challenges_txt" {
   zone_id = aws_route53_zone.domains["svcs_dev"].zone_id
   name    = "_acme-challenge.${aws_route53_zone.domains["svcs_dev"].name}"
   type    = "TXT"
@@ -94,7 +96,7 @@ resource "aws_route53_record" "showcase_acme_challenges_txt" {
 
 # Special Record for HTTP interface of https://github.com/ksatirli/breakpoint
 # see https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record
-resource "aws_route53_record" "showcase_breakpoint_a" {
+resource "aws_route53_record" "svcs_dev_breakpoint_a" {
   zone_id = aws_route53_zone.domains["svcs_dev"].zone_id
   name    = "breakpoint.${aws_route53_zone.domains["svcs_dev"].name}"
   type    = "A"
@@ -107,7 +109,7 @@ resource "aws_route53_record" "showcase_breakpoint_a" {
 
 # Special Record for HTTP interface of https://github.com/ksatirli/breakpoint
 # see https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record
-resource "aws_route53_record" "showcase_breakpoint_aaaa" {
+resource "aws_route53_record" "svcs_dev_breakpoint_aaaa" {
   zone_id = aws_route53_zone.domains["svcs_dev"].zone_id
   name    = "breakpoint.${aws_route53_zone.domains["svcs_dev"].name}"
   type    = "AAAA"

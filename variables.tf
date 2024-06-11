@@ -41,7 +41,7 @@ variable "domains" {
     workloads_app = {
       name                     = "workloads.app"
       github_challenge         = "77b4be4f07"
-      google_site_verification = "TODO"
+      google_site_verification = "kSwKJzFopsfIjM2I43S_J1pVc4jEDHonnB3DLPPx98o"
       keybase_proof            = "aJqgAoEi9QTo6_FhC2y75snwQy4-QLIxOwhNEwePjzE"
       onepassword_challenge    = "FK4AXLF7G5EAFCD5TNAGKPYHNU"
     }
@@ -65,7 +65,7 @@ variable "domains" {
     workloads_run = {
       name                     = "workloads.run"
       github_challenge         = "22b0874a2d"
-      google_site_verification = "TODO"
+      google_site_verification = "D_UQvC64cM9jLbMWrjAqFRvqlbIZktoaWkN8eWYsWGQ"
       keybase_proof            = "J-53RDP5dJ-f8dt_IRUdmUlykOhRgRRsau-vixcb7so"
       onepassword_challenge    = "OK76JLK6UFHYTHLQFCVCFRVXBM"
     }
