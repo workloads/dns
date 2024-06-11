@@ -23,12 +23,12 @@ module "github_verification" {
 
   # see https://registry.terraform.io/modules/ksatirli/route53-github-verification/aws/2.0.0
   source  = "ksatirli/route53-github-verification/aws"
-  version = "2.0.0"
+  version = "3.0.0"
 
-  # GitHub Organizations require `-org` suffix, personal accounts do not
-  github_organization = "${var.project_identifier}-org"
-  ownership_record    = var.domains[each.key].github_challenge
-  zone_id             = aws_route53_zone.domains[each.key].zone_id
+  # GitHub Organizations require `-o` suffix, personal accounts do not
+  github_owner    = "${var.project_identifier}-o"
+  validation_code = var.domains[each.key].github_challenge
+  zone_id         = aws_route53_zone.domains[each.key].zone_id
 }
 
 module "keybase_domain_proofs" {
