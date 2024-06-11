@@ -47,7 +47,7 @@ For more information, including detailed usage guidelines, see the [Terraform do
 | Name | Description |
 |------|-------------|
 | aws_route53_zone_domains | Exported Attributes for `aws_route53_zone.domains`. |
-| aws_route53_zone_showcase_subdomains | Exported Attributes for `aws_route53_zone.showcase_subdomains`. |
+| aws_route53_zone_svcs_dev_subdomains | Exported Attributes for `aws_route53_zone.svcs_dev_subdomains`. |
 | gandi_nameservers | Exported Attributes for `gandi_nameservers`. |
 | google_search_console_urls | Google Search Console URLs. |
 <!-- END_TF_DOCS -->
