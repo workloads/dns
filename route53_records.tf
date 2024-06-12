@@ -1,4 +1,3 @@
-
 module "github_verification" {
   # see https://developer.hashicorp.com/terraform/language/meta-arguments/for_each
   for_each = aws_route53_zone.domains
@@ -56,24 +55,13 @@ resource "aws_route53_record" "svcs_dev_txt" {
   zone_id = aws_route53_zone.domains["svcs_dev"].zone_id
   name    = aws_route53_zone.domains["svcs_dev"].name
   type    = "TXT"
-  ttl     = 300
+  ttl     = var.record_ttl
 
   # see https://developer.hashicorp.com/terraform/language/functions/concat
   records = [
     "1password-site-verification=${var.domains["svcs_dev"].onepassword_challenge}",
     "google-site-verification=${var.domains["svcs_dev"].google_site_verification}"
   ]
-}
-
-# Special Record for Let's Encrypt DNS Challenge
-# see https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record
-resource "aws_route53_record" "svcs_dev_acme_challenges_txt" {
-  zone_id = aws_route53_zone.domains["svcs_dev"].zone_id
-  name    = "_acme-challenge.${aws_route53_zone.domains["svcs_dev"].name}"
-  type    = "TXT"
-  ttl     = 300
-
-  records = var.domains["svcs_dev"].acme_challenges
 }
 
 # Special Record for HTTP interface of https://github.com/ksatirli/breakpoint

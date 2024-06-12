@@ -1,7 +1,6 @@
 variable "domains" {
   type = map(object({
     name                     = string
-    acme_challenges          = optional(list(string))
     github_challenge         = optional(string)
     google_site_verification = optional(string)
     keybase_proof            = optional(string)
@@ -13,16 +12,7 @@ variable "domains" {
 
   default = {
     svcs_dev = {
-      name = "svcs.dev"
-
-      acme_challenges = [
-        "TsFD07SzwHyIe0fLmjda5Lq2eu4d9_gCTk4QptwCby0",
-        "JRrcDuN5LQbRMv3BTNjfphpabPKZ1U_ZArP8g0LdwCc",
-        "Lsp8ZUJApBqmPvcc1s7E-t4ZuZvI3TKHY1Fx6aE-SnE",
-        "9U4APQD_G0aw2mqSyN6nk9Ipj4LT_BTfq6SiBOz2qMU",
-        "KvGGShk_cST1oDdAEUiOh2NAkeH2HPZBXifmgUxopPE"
-      ]
-
+      name                     = "svcs.dev"
       github_challenge         = "2b19dbea14"
       google_site_verification = "ewzgQe2JqLh1NtW7UNrJOz_q9qS8v60XNufRwJWc2dw"
       keybase_proof            = "AXT59FZrv3btmhs7FVT9AIlLn90CZ5iYpSIJo2WEtAg"
@@ -86,4 +76,10 @@ variable "management_region_aws" {
 variable "project_identifier" {
   type        = string
   description = "Human-readable Project Identifier."
+}
+
+variable "record_ttl" {
+  type = number
+  description = "TTL of DNS Records."
+  default = 300
 }

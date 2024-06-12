@@ -7,7 +7,7 @@ resource "aws_route53_zone" "domains" {
   comment = "Terraform-managed DNS Zone for ${var.project_identifier}."
 }
 
-# create subdomains for each item listed in CSP Configuration
+# create Route53 Zones for each item listed in CSP Configuration
 # see https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_zone
 resource "aws_route53_zone" "svcs_dev_subdomains" {
   # see https://developer.hashicorp.com/terraform/language/meta-arguments/for_each
