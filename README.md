@@ -24,7 +24,7 @@
 
 For development and testing of this repository:
 
-- `terraform-docs` `0.17.0` or [newer](https://terraform-docs.io/user-guide/installation/)
+- `terraform-docs` `0.18.0` or [newer](https://terraform-docs.io/user-guide/installation/)
 
 ## Usage
 
