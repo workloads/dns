@@ -1,4 +1,4 @@
-# Terraform Cloud Workspace `dns`
+# HCP Terraform Workspace `dns`
 
 > This repository manages DNS Configuration for [@workloads](https://github.com/workloads).
 
