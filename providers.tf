@@ -14,5 +14,5 @@ provider "aws" {
 # The Gandi Provider is set to retrieve configuration from the executing environment
 # see https://registry.terraform.io/providers/go-gandi/gandi/latest/docs#authentication
 provider "gandi" {
-  personal_access_token = var.gandi_personal_access_token
+  personal_access_token = var.gandi_api_key
 }

@@ -62,7 +62,7 @@ variable "domains" {
   }
 }
 
-variable "gandi_personal_access_token" {
+variable "gandi_api_key" {
   type        = string
   description = "Gandi API Key."
   sensitive   = true
