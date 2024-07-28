@@ -83,3 +83,9 @@ variable "record_ttl" {
   description = "TTL of DNS Records."
   default     = 300
 }
+
+variable "tfe_team_token_viewers" {
+  type        = string
+  description = "HCP Terraform `viewers` Team Token."
+  sensitive   = true
+}

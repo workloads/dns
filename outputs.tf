@@ -21,3 +21,8 @@ output "google_search_console_urls" {
     for identifier, domain in var.domains : identifier => "https://search.google.com/search-console?resource_id=sc-domain%3A${domain.name}"
   }
 }
+
+output "tfe_workspace_terraform_version" {
+  description = "Terraform version identifier of current HCP Terraform Workspace."
+  value       = data.tfe_workspace.main.terraform_version
+}
