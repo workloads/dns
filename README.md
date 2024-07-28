@@ -5,7 +5,7 @@
 ## Table of Contents
 
 <!-- TOC -->
-* [Terraform Cloud Workspace `dns`](#terraform-cloud-workspace-dns)
+* [HCP Terraform Workspace `dns`](#hcp-terraform-workspace-dns)
   * [Table of Contents](#table-of-contents)
   * [Requirements](#requirements)
     * [Development](#development)

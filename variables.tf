@@ -79,7 +79,7 @@ variable "project_identifier" {
 }
 
 variable "record_ttl" {
-  type = number
+  type        = number
   description = "TTL of DNS Records."
-  default = 300
+  default     = 300
 }
