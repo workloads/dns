@@ -1,5 +1,5 @@
 terraform {
-  # see https://developer.hashicorp.com/terraform/language/settings/terraform-cloud
+  # see https://developer.hashicorp.com/terraform/language/settings/cloud
   cloud {
     # see https://app.terraform.io/app/workloads/workspaces
     # and https://developer.hashicorp.com/terraform/cli/cloud/settings#organization
